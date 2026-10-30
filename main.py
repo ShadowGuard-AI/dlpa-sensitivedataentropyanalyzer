@@ -2,10 +2,7 @@ import argparse
 import os
 import math
 import logging
-import binascii
-import mimetypes
 from faker import Faker
-import re
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -15,7 +12,9 @@ def setup_argparse():
     Sets up the argument parser for the command line interface.
     """
     parser = argparse.ArgumentParser(description="Calculates the entropy of files and directories to identify potential sensitive data.")
-    parser.add_argument("path", help="Path to the file or directory to analyze.")
+    # Optional at the argparse level because generate mode needs no input
+    # path; main checks that a path was given for an analysis run.
+    parser.add_argument("path", nargs="?", default=None, help="Path to the file or directory to analyze.")
     parser.add_argument("-t", "--threshold", type=float, default=4.5, help="Entropy threshold. Files exceeding this value will be flagged. Default: 4.5")
     parser.add_argument("-r", "--recursive", action="store_true", help="Recursively analyze directories.")
     parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output (debug logging).")
@@ -39,11 +38,14 @@ def calculate_entropy(data):
     if not data:
         return 0
 
+    # One pass with Counter instead of 256 full rescans of the buffer
+    # (data.count inside the old loop). Same probabilities, far less work
+    # on the large files this tool exists to flag.
+    from collections import Counter
     entropy = 0
-    for x in range(256):
-        p_x = float(data.count(x)) / len(data)
-        if p_x > 0:
-            entropy += - p_x * math.log(p_x, 2)
+    for count in Counter(data).values():
+        p_x = count / len(data)
+        entropy += - p_x * math.log(p_x, 2)
     return entropy
 
 
@@ -143,6 +145,9 @@ def main():
 
     if args.generate:
         generate_fake_sensitive_data(args.num_files, args.output_dir)
+    elif not args.path:
+        logging.error("A path is required unless --generate is used.")
+        raise SystemExit(2)
     else:
         path = args.path
         threshold = args.threshold

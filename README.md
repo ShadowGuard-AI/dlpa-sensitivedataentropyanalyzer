@@ -3,6 +3,8 @@
 # dlpa-SensitiveDataEntropyAnalyzer
 Calculates the entropy of files and directories to identify potential sensitive data based on high randomness and structured formats, bypassing reliance on predefined keywords or patterns. Flags files exceeding an entropy threshold for further investigation. - Focused on Tools for assessing the effectiveness of data leakage prevention (DLP) measures. This involves generating realistic but fake sensitive data (e.g., credit card numbers, names, addresses) using Faker and then testing how well DLP systems detect and prevent the exfiltration of this data. Focus on validating DLP rules rather than building a full DLP system.
 
+Note: generate mode (-g) needs no path argument. An analysis run without a path is an error.
+
 ## Install
 `git clone https://github.com/ShadowStrikeHQ/dlpa-sensitivedataentropyanalyzer`
 
