@@ -144,6 +144,9 @@ def main():
         logging.getLogger().setLevel(logging.DEBUG)
 
     if args.generate:
+        if args.num_files < 1:
+            logging.error(f"--num-files must be at least 1, got {args.num_files}.")
+            raise SystemExit(1)
         generate_fake_sensitive_data(args.num_files, args.output_dir)
     elif not args.path:
         logging.error("A path is required unless --generate is used.")
@@ -158,7 +161,10 @@ def main():
         elif os.path.isdir(path):
             analyze_directory(path, threshold, recursive)
         else:
+            # A missing path used to log and exit 0, reporting an
+            # analysis that never ran as if it had passed.
             logging.error(f"Path not found: {path}")
+            raise SystemExit(1)
 
 
 if __name__ == "__main__":
@@ -168,13 +174,13 @@ if __name__ == "__main__":
 # Usage Examples:
 
 # 1. Analyze a single file:
-# python dlpa_SensitiveDataEntropyAnalyzer.py my_document.txt
+# python main.py my_document.txt
 
 # 2. Analyze a directory recursively with a custom threshold:
-# python dlpa_SensitiveDataEntropyAnalyzer.py /path/to/directory -r -t 5.0
+# python main.py /path/to/directory -r -t 5.0
 
 # 3. Generate 20 fake sensitive data files in a directory named "test_data":
-# python dlpa_SensitiveDataEntropyAnalyzer.py -g -n 20 -d test_data
+# python main.py -g -n 20 -d test_data
 
 # 4. Enable verbose logging:
-# python dlpa_SensitiveDataEntropyAnalyzer.py my_document.txt -v
+# python main.py my_document.txt -v
