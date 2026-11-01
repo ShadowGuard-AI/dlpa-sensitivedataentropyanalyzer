@@ -61,6 +61,11 @@ def analyze_file(filepath, threshold):
         bool: True if the file's entropy exceeds the threshold, False otherwise.
     """
     try:
+        # The entropy is one number for the whole file, read fully into
+        # memory. A small secret inside a large plain file barely moves
+        # that number, and a small compressed or encoded file is high
+        # from end to end, so this flags shapes of files rather than
+        # locating sensitive content inside them.
         with open(filepath, "rb") as f:
             data = f.read()
         entropy = calculate_entropy(data)
@@ -157,6 +162,10 @@ def main():
         recursive = args.recursive
 
         if os.path.isfile(path):
+            # The True or False comes back and is set aside: a flagged
+            # file shows up only as a warning in the log, and the run
+            # exits 0 either way. Directory mode discards the results
+            # the same way inside analyze_directory.
             analyze_file(path, threshold)
         elif os.path.isdir(path):
             analyze_directory(path, threshold, recursive)
