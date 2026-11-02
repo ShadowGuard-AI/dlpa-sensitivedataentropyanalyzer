@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="620" viewBox="0 0 1600 620" role="img" aria-label="Animated schoolyard waystation in three bands">
+<rect width="1600" height="620" fill="#bfdce8"/>
+<!-- Far band: sky, field, clouds crossing slowly, grass bending and recovering -->
+<g>
+<ellipse cx="200" cy="70" rx="110" ry="24" fill="#ffffff" opacity="0.85"><animate attributeName="cx" values="200;1500;200" dur="60s" repeatCount="indefinite"/></ellipse>
+<ellipse cx="900" cy="110" rx="140" ry="28" fill="#ffffff" opacity="0.7"><animate attributeName="cx" values="900;120;900" dur="75s" repeatCount="indefinite"/></ellipse>
+<rect x="1050" y="120" width="550" height="180" fill="#c4b29e"/>
+<rect x="0" y="288" width="1600" height="72" fill="#80a85c"/>
+<g stroke="#4e7a3a" stroke-width="3">
+<path d="M120 356 Q126 330 120 310"><animate attributeName="d" values="M120 356 Q126 330 120 310;M120 356 Q138 330 132 310;M120 356 Q126 330 120 310" dur="4s" repeatCount="indefinite"/></path>
+<path d="M300 356 Q306 330 300 310"><animate attributeName="d" values="M300 356 Q306 330 300 310;M300 356 Q318 330 312 310;M300 356 Q306 330 300 310" dur="5s" repeatCount="indefinite"/></path>
+<path d="M700 356 Q706 330 700 310"><animate attributeName="d" values="M700 356 Q706 330 700 310;M700 356 Q718 330 712 310;M700 356 Q706 330 700 310" dur="4.5s" repeatCount="indefinite"/></path>
+</g>
+<g fill="#7a5a3a"><rect x="0" y="252" width="1600" height="10"/><rect x="0" y="300" width="1600" height="8"/></g>
+</g>
+<!-- Middle band: beds, pod swaying then parting, seeds drifting, ants in file, dragonfly rest dart hover rest -->
+<g>
+<polygon points="60,620 240,380 1360,380 1540,620" fill="#7a5a3a"/>
+<polygon points="130,600 280,404 1320,404 1470,600" fill="#4a3a2a"/>
+<g>
+<animateTransform attributeName="transform" type="rotate" values="-2 330 270;2 330 270;-2 330 270" dur="6s" repeatCount="indefinite"/>
+<line x1="330" y1="270" x2="336" y2="360" stroke="#38602a" stroke-width="7"/>
+<ellipse cx="330" cy="450" rx="62" ry="100" fill="#d9a441"/>
+<path d="M330 360 L322 540 L330 556 L338 540 Z" fill="#faf4e2"/>
+</g>
+<g fill="#5c4228">
+<circle cx="330" cy="420" r="9"><animate attributeName="cx" values="330;520;760" dur="12s" repeatCount="indefinite"/><animate attributeName="cy" values="420;470;540" dur="12s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="12s" repeatCount="indefinite"/></circle>
+<circle cx="330" cy="440" r="9"><animate attributeName="cx" values="330;430;620" dur="12s" begin="3s" repeatCount="indefinite"/><animate attributeName="cy" values="440;500;570" dur="12s" begin="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="12s" begin="3s" repeatCount="indefinite"/></circle>
+</g>
+<g fill="#261e18">
+<circle r="6"><animateMotion path="M612 500 L618 340" dur="8s" repeatCount="indefinite"/></circle>
+<circle r="6"><animateMotion path="M612 500 L618 340" dur="8s" begin="2s" repeatCount="indefinite"/></circle>
+<circle r="6"><animateMotion path="M640 340 L634 500" dur="8s" begin="1s" repeatCount="indefinite"/></circle>
+</g>
+<g>
+<animateTransform attributeName="transform" type="translate" values="0 0;0 0;260 -60;260 -60;0 0" keyTimes="0;0.4;0.55;0.8;1" dur="10s" repeatCount="indefinite"/>
+<line x1="1174" y1="364" x2="1306" y2="364" stroke="#d2e4ea" stroke-width="7"/>
+<line x1="1240" y1="356" x2="1240" y2="408" stroke="#345460" stroke-width="6"/>
+</g>
+<rect x="1236" y="380" width="8" height="100" fill="#5c4228"/>
+</g>
+<!-- Near band: webs that hang and collect, water beads growing and dropping, bee frames stacked and waiting -->
+<g stroke="#f0f6f8" stroke-width="1" opacity="0.9">
+<line x1="488" y1="386" x2="544" y2="412"/><line x1="488" y1="412" x2="544" y2="386"/><circle cx="516" cy="399" r="18" fill="none"/><circle cx="516" cy="399" r="30" fill="none"/>
+</g>
+<circle cx="516" cy="399" r="3" fill="#e8f4fa"><animate attributeName="r" values="2;5;5" dur="5s" repeatCount="indefinite"/><animate attributeName="cy" values="399;399;440" dur="5s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;1;0" dur="5s" repeatCount="indefinite"/></circle>
+<g fill="#c9a86a" stroke="#7a5a3a" stroke-width="3">
+<rect x="1420" y="470" width="110" height="26"/><rect x="1420" y="500" width="110" height="26"/><rect x="1420" y="530" width="110" height="26"/>
+</g>
+<rect x="0" y="560" width="1600" height="60" fill="#4e7a3a" opacity="0.55"/>
+</svg>
